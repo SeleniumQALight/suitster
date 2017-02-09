@@ -10,8 +10,8 @@ import verifyingMyAcountForm.LoginFromMyAcount;
 @Suite.SuiteClasses(
         {
              CheckLanguageOnHomePage.class,
-                CheckRegisterForm.class,
-                LoginFromMyAcount.class
+             CheckRegisterForm.class,
+             LoginFromMyAcount.class
         }
 )
 public class SuitForSmoke {
