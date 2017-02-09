@@ -11,7 +11,7 @@ import verifyingMyAcountForm.LoginFromMyAcount;
         {
              CheckLanguageOnHomePage.class,
              CheckRegisterForm.class,
-             LoginFromMyAcount.class
+               LoginFromMyAcount.class
         }
 )
 public class SuitForSmoke {
