@@ -30,19 +30,21 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(value = Parameterized.class)
 public class ParentTest {
-    public WebDriver driver;
-    Logger log = Logger.getLogger(getClass());
-    Utils utils = new Utils();
-    protected boolean isTestPass = false;
+    private WebDriver driver;
+    private Logger log = Logger.getLogger(getClass());
+    private Utils utils = new Utils();
+    private boolean isTestPass = false;
     protected HomePage homePage ;
     protected MyAccountPage myAccountPage;
     protected CartPage cart;
 
     private String pathToScreenShot;
     private String browser;
+    protected String browserForIgnoreBug;
 
     public ParentTest(String browser) {
         this.browser = browser;
+        browserForIgnoreBug = this.browser;
     }
 
     @Parameterized.Parameters
@@ -109,8 +111,8 @@ public class ParentTest {
 
     @After
     public void tearDown() {
-        if (!driver.equals(null)) {
-            if (isTestPass == false){
+        if (!(driver == null)) {
+            if (!isTestPass){
                 utils.screenShot(pathToScreenShot, driver);
             }
             driver.quit();
@@ -127,7 +129,7 @@ public class ParentTest {
         setTestPass();
     }
 
-    protected void setTestPass(){
+    private void setTestPass(){
         isTestPass = true;
     }
 

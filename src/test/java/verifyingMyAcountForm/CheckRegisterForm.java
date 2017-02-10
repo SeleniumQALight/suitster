@@ -12,7 +12,7 @@ public class CheckRegisterForm extends ParentTest {
     @Test
     public void checkDiffPassWhenRegistrationEn() {
         homePage.openEnPage();
-        homePage.closePromoPopUp();
+        homePage.closePromoPopUp(browserForIgnoreBug);
         homePage.clickMyAccountLink();
         myAccountPage.waitPageMyAcountLoaded();
         myAccountPage.checkPageTitle("My Account - Suitster");
@@ -27,7 +27,7 @@ public class CheckRegisterForm extends ParentTest {
     @Test
     public void checkDiffPassWhenRegistrationRu() {
         homePage.openPage();
-        homePage.closePromoPopUp();
+        homePage.closePromoPopUp(browserForIgnoreBug);
         homePage.clickMyAccountLink();
         myAccountPage.waitPageMyAcountLoaded();
         myAccountPage.checkPageTitle("Мой профиль - Suitster.com");
