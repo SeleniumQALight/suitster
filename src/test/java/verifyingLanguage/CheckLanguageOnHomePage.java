@@ -13,7 +13,7 @@ public class CheckLanguageOnHomePage extends ParentTest {
     @Test
     public void englishLanguageOnHomePage() {
         homePage.openPage();
-        homePage.closePromoPopUp();
+        homePage.closePromoPopUp(browserForIgnoreBug);
         homePage.checkPageTitle("Suitster.com - онлайн магазин модных международных и украинских брендов");
         homePage.clickEnglishLang();
         checkAC("Title is not expected.", homePage.getPageTitle(), "Homepage - Suitster");
@@ -22,7 +22,7 @@ public class CheckLanguageOnHomePage extends ParentTest {
     @Test
     public void russianLanguageOnHomePage() {
         homePage.openEnPage();
-        homePage.closePromoPopUp();
+        homePage.closePromoPopUp(browserForIgnoreBug);
         homePage.checkPageTitle("Homepage - Suitster");
         homePage.clickRussianLang();
         checkAC("Title is not expected.", homePage.getPageTitle(), "Suitster.com - онлайн магазин модных международных и украинских брендов");

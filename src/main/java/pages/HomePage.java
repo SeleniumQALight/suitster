@@ -9,19 +9,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class HomePage extends ParentPage {
 
     @FindBy(xpath = ".//*[@class='promo-image']//img")
-    WebElement promoImage;
+    private WebElement promoImage;
 
     @FindBy(xpath = ".//*[@class='close']")
-    WebElement buttonClosePromo;
+    private WebElement buttonClosePromo;
 
     @FindBy(xpath = ".//a[text()='English']")
-    WebElement linkEnglishLang;
+    private WebElement linkEnglishLang;
 
     @FindBy(xpath = ".//*[@id='user-menu']/ul[1]/li/a")
-    WebElement linkRussianLang;
+    private WebElement linkRussianLang;
 
     @FindBy(xpath = ".//nav[@id=\"user-menu\"]//*[contains(@href,'my-account')]")
-    WebElement linkMyAccount;
+    private WebElement linkMyAccount;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -36,14 +36,14 @@ public class HomePage extends ParentPage {
 
     public void openEnPage() {
         driver.get("http://suitster.com/en/");
-        String[] skills = {"sql", "java", "regression"};
-//        wait.until(ExpectedConditions.visibilityOf(promoImage));
         log.info("Home Page was opened");
     }
 
-    public void closePromoPopUp() {
-        actionWithWebElement.clickButton(buttonClosePromo);
-        log.info("Popup promo was closed English");
+    public void closePromoPopUp(String browserForIgnoreBug) {
+        if (!"iedriver".equals(browserForIgnoreBug)) {
+            actionWithWebElement.clickButton(buttonClosePromo);
+            log.info("Popup promo was closed English");
+        }
     }
 
     public void clickEnglishLang() {

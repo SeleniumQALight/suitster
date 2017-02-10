@@ -11,7 +11,7 @@ public class LoginFromMyAcount extends ParentTest {
     @Test
     public void checkEnterOnAcountRu(){
         homePage.openPage();
-        homePage.closePromoPopUp();
+        homePage.closePromoPopUp(browserForIgnoreBug);
         homePage.clickMyAccountLink();
         myAccountPage.waitPageMyAcountLoaded();
         myAccountPage.checkPageTitle("Мой профиль - Suitster.com");
@@ -27,7 +27,7 @@ public class LoginFromMyAcount extends ParentTest {
     @Test
     public void checkEnterOnAcountEn(){
         homePage.openEnPage();
-        homePage.closePromoPopUp();
+        homePage.closePromoPopUp(browserForIgnoreBug);
         homePage.clickMyAccountLink();
         myAccountPage.waitPageMyAcountLoaded();
         myAccountPage.checkPageTitle("My Account - Suitster");
