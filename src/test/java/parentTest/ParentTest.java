@@ -102,7 +102,7 @@ public class ParentTest {
 
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         homePage = new HomePage(driver);
         myAccountPage = new MyAccountPage(driver);
         cart = new CartPage(driver);
