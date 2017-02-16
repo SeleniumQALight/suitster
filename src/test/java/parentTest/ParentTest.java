@@ -18,6 +18,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.CartPage;
 import pages.HomePage;
 import pages.MyAccountPage;
+import pages.Shop;
 
 
 import java.io.File;
@@ -34,9 +35,10 @@ public class ParentTest {
     private Logger log = Logger.getLogger(getClass());
     private Utils utils = new Utils();
     private boolean isTestPass = false;
-    protected HomePage homePage ;
+    protected HomePage homePage;
     protected MyAccountPage myAccountPage;
     protected CartPage cart;
+    protected Shop shop;
 
     private String pathToScreenShot;
     private String browser;
@@ -50,11 +52,11 @@ public class ParentTest {
     @Parameterized.Parameters
     public static Collection testData() {
         return Arrays.asList(new Object[][]{
-               {"fireFox"}
-               ,
-                {"chrome"}
-                ,
-                { "iedriver" }
+                {"fireFox"}
+//               ,
+//                {"chrome"}
+//                ,
+//                { "iedriver" }
 //                ,
 //                    { "opera" }
         });
@@ -87,7 +89,7 @@ public class ParentTest {
             capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
             capabilities.setCapability("ignoreZoomSetting", true);
             capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-            driver=new InternetExplorerDriver();
+            driver = new InternetExplorerDriver();
             System.out.println(" IE is started");
         } else if ("opera".equals(browser)) {
             System.out.println("Opera will be started");
@@ -100,19 +102,19 @@ public class ParentTest {
         pathToScreenShot = file.getAbsolutePath() + "\\target\\screenshot\\" + this.getClass().getPackage().getName() + "\\" + this.getClass().getSimpleName() + "\\" + this.testName.getMethodName() + "-" + browser + ".jpg";
 
 
-
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         homePage = new HomePage(driver);
         myAccountPage = new MyAccountPage(driver);
         cart = new CartPage(driver);
+        shop = new Shop(driver);
 
     }
 
     @After
     public void tearDown() {
         if (!(driver == null)) {
-            if (!isTestPass){
+            if (!isTestPass) {
                 utils.screenShot(pathToScreenShot, driver);
             }
             driver.quit();
@@ -129,7 +131,7 @@ public class ParentTest {
         setTestPass();
     }
 
-    private void setTestPass(){
+    private void setTestPass() {
         isTestPass = true;
     }
 
