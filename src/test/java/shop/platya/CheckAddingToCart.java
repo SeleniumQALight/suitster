@@ -25,10 +25,21 @@ public class CheckAddingToCart extends ParentTest {
         checkAC("UserName", cart.getUserName(), "TEST10");
 
         myAccountPage.clickLinkShop();
+        shop.checkPageTitle("Онлайн магазин - Suitster.com");
         shop.clickOnItemInLeftMenuShop("Платья");
+        shop.checkPageTitle("Купить брендовое платье от ведущих украинских дизайнеров ◆");
         shop.clickOnProductByName("Lovers+Friends");
-        shop.checkPageWithProductWasOpened("Lovers+Friends1");
+        shop.checkPageWithProductWasOpened("Lovers+Friends");
 
+        shop.selectValueFromDDSize("S");
+        shop.clickButtonAddToCart();
+
+        shop.clickButtonCheckOut();
+        shop.checkPageTitle("Корзина - Suitster.com");
+        checkAC("Product 'Lovers+Friends' is not in Cart", cart.isProductInCart("Lovers+Friends"), true);
+        cart.clickDeleteProductFromCart("Lovers+Friends");
+
+        cart.checkMessageOnPopup("Товар успешно удален из корзины");
     }
 
 }

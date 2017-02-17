@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.hamcrest.Matchers.is;
@@ -26,6 +27,7 @@ public class ParentPage {
     }
 
     public void checkPageTitle (String title){
+        wait.until(ExpectedConditions.titleIs(title));
         Assert.assertThat("Title is not expected " , driver.getTitle(), is(title) );
     }
 

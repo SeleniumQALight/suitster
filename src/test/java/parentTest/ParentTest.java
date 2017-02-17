@@ -131,6 +131,15 @@ public class ParentTest {
         setTestPass();
     }
 
+    public void checkAC(String message, Boolean actual, Boolean expected){
+        if (!(actual == expected)) {
+            utils.screenShot(pathToScreenShot, driver);
+            log.error("AC failed: " + message);
+        }
+        Assert.assertThat(message + "Browser - " + browser + " ScreenShot " + pathToScreenShot, actual, is(expected));
+        setTestPass();
+    }
+
     private void setTestPass() {
         isTestPass = true;
     }

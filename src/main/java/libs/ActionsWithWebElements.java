@@ -1,26 +1,26 @@
 package libs;
 
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionsWithWebElements {
-    WebDriver driver;
-    Logger log;
-    WebDriverWait wait;
+    private WebDriver driver;
+    private Logger log;
+    private WebDriverWait wait;
 
     public ActionsWithWebElements(WebDriver driver) {
         this.driver = driver;
         log = Logger.getLogger(getClass());
-        wait = new WebDriverWait(driver, 15);
+        wait = new WebDriverWait(driver, 20);
     }
 
     public void clickButton(WebElement button) {
         try {
-            wait.until(ExpectedConditions.visibilityOf(button));
+            wait.until(ExpectedConditions.elementToBeClickable(button));
             button.click();
             log.info("Button was Clicked");
         } catch (TimeoutException te) {
@@ -34,7 +34,7 @@ public class ActionsWithWebElements {
 
     public void clickLink(WebElement linkElement) {
         try {
-            wait.until(ExpectedConditions.visibilityOf(linkElement)).click();
+            wait.until(ExpectedConditions.elementToBeClickable(linkElement)).click();
             log.info("Link was Clicked");
         } catch (Exception e) {
             log.error("Can not work with Link");
@@ -56,7 +56,7 @@ public class ActionsWithWebElements {
     public String getTextFromElement(WebElement element) {
         String textFromElement = "";
         try {
-            textFromElement = element.getText();
+            textFromElement = wait.until(ExpectedConditions.visibilityOf(element)).getText();
         } catch (Exception e) {
             log.error("Can not get text from element");
             Assert.fail("Can not get text from element");
@@ -66,9 +66,23 @@ public class ActionsWithWebElements {
 
     public boolean isElementWithXpathShown(String locator) {
         try {
-            return driver.findElement(By.xpath(locator)).isDisplayed();
+            return wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(locator)))).isDisplayed();
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    public void selectValueInDD(WebElement elementDD, String value){
+        try {
+            Select select = new Select(elementDD);
+            select.selectByValue(value);
+        }catch (Exception e){
+            log.error("Can not work with DropDown");
+            Assert.fail("Can not work with DropDown");
+        }
+    }
+
+    public void waitUntilElementWithXpathWillBeNotShown(WebElement element) {
+        wait.until(ExpectedConditions.not(ExpectedConditions.visibilityOf(element)));
     }
 }
