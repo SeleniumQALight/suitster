@@ -9,9 +9,9 @@ import verifyingMyAcountForm.LoginFromMyAcount;
 @RunWith(Suite.class)
 @Suite.SuiteClasses(
         {
-             CheckLanguageOnHomePage.class,
-             CheckRegisterForm.class,
-               LoginFromMyAcount.class
+                CheckLanguageOnHomePage.class,
+                CheckRegisterForm.class,
+                LoginFromMyAcount.class
         }
 )
 public class SuitForSmoke {
