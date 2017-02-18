@@ -39,6 +39,9 @@ public class MyAccountPage extends ParentPage {
     @FindBy(xpath = ".//*[@id='header-menu']//*[@href='http://suitster.com/shop/']")
     private WebElement linkShop;
 
+    @FindBy(xpath = ".//*[@id='errors_reg']//p")
+    WebElement errorMessage;
+
     public MyAccountPage(WebDriver driver) {
         super(driver);
     }
@@ -68,6 +71,10 @@ public class MyAccountPage extends ParentPage {
 
     public String getMessageFromPopUp() {
         return actionWithWebElement.getTextFromElement(messageOnPopUp);
+    }
+
+    public String getErrorMessage(){
+        return actionWithWebElement.getTextFromElement(errorMessage);
     }
 
     public void checkMessageOnPopup(String message) {
