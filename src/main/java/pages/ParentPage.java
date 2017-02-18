@@ -3,6 +3,7 @@ package pages;
 import libs.ActionsWithWebElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,8 +28,12 @@ public class ParentPage {
     }
 
     public void checkPageTitle (String title){
-        wait.until(ExpectedConditions.titleIs(title));
-        Assert.assertThat("Title is not expected " , driver.getTitle(), is(title) );
+        try {
+            wait.until(ExpectedConditions.titleIs(title));
+        } catch (TimeoutException e){
+            log.info("TimeoutException: Expected condition failed");
+        }
+        Assert.assertThat("Title is not expected ", driver.getTitle(), is(title));
     }
 
     public String getPageTitle(){

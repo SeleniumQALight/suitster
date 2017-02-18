@@ -1,5 +1,6 @@
 package verifyingMyAcountForm;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -25,6 +26,7 @@ public class LoginFromMyAcount extends ParentTest {
     }
 
     @Test
+    @Ignore
     public void checkEnterOnAcountEn(){
         homePage.openEnPage();
         homePage.closePromoPopUp(browserForIgnoreBug);
