@@ -16,12 +16,12 @@ public class LoginFromMyAcount extends ParentTest {
         homePage.clickMyAccountLink();
         myAccountPage.waitPageMyAcountLoaded();
         myAccountPage.checkPageTitle("Мой профиль - Suitster.com");
-        myAccountPage.enterLoginInToInput("test@qalight.com");
-        myAccountPage.enterPassInToInputPass("1");
+        myAccountPage.enterLoginInToInput("test11@qalight.com");
+        myAccountPage.enterPassInToInputPass("12345QA");
         myAccountPage.clickLoginButton();
         myAccountPage.checkMessageOnPopup("Оформление заказа не доступно, пока ваша корзина пуста.");
         myAccountPage.clickOnButtonOkOnPopup();
-        checkAC("UserName",cart.getUserName(),"TEST10");
+        checkAC("UserName",cart.getUserName(),"TEST11");
 
     }
 
