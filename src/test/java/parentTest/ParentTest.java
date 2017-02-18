@@ -53,8 +53,8 @@ public class ParentTest {
     public static Collection testData() {
         return Arrays.asList(new Object[][]{
                 {"fireFox"}
-//               ,
-//                {"chrome"}
+               ,
+                {"chrome"}
 //                ,
 //                { "iedriver" }
 //                ,

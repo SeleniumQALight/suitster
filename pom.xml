@@ -130,7 +130,7 @@
                 <version>2.18.1</version>
                 <configuration>
                     <parallel>classes</parallel>
-                    <threadCount>4</threadCount>
+                    <threadCount>1</threadCount>
                 </configuration>
             </plugin>
         </plugins>
