@@ -21,7 +21,7 @@ public class LoginFromMyAcount extends ParentTest {
         myAccountPage.clickLoginButton();
         myAccountPage.checkMessageOnPopup("Оформление заказа не доступно, пока ваша корзина пуста.");
         myAccountPage.clickOnButtonOkOnPopup();
-        checkAC("UserName",cart.getUserName(),"TEST11");
+        checkAC("UserName",cart.getUserName(),"TEST11")
 
     }
 
