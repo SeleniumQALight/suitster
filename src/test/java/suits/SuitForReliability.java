@@ -2,6 +2,7 @@ package suits;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import shop.platya.CheckAddingToCart;
 import verifyingLanguage.CheckLanguageOnHomePage;
 import verifyingMyAcountForm.CheckRegisterForm;
 import verifyingMyAcountForm.LoginFromMyAcount;
@@ -11,10 +12,11 @@ import verifyingMyAcountForm.LoginFromMyAcount;
         {
                 CheckLanguageOnHomePage.class,
                 CheckRegisterForm.class,
-                LoginFromMyAcount.class
+                LoginFromMyAcount.class,
+                CheckAddingToCart.class
         }
 )
-public class SuitForSmoke {
+public class SuitForReliability {
 
 }
 
